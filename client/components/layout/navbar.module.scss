@@ -1,0 +1,45 @@
+$nav-height: 100px;
+
+.container {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: $nav-height;
+  padding: 0 30px;
+  top: 0;
+  left: 0;
+  transition: top 0.5s;
+
+  ul {
+    li {
+      list-style: none;
+
+      a {
+        cursor: pointer;
+        font-size: 1.5em;
+        font-weight: lighter;
+        color: var(--fg-1);
+        padding: 0 25px;
+        opacity: 0.5;
+        transition: opacity 0.3s;
+      }
+
+      a:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  > div {
+    h1 {
+      font-weight: normal;
+      color: var(--fg-1);
+    }
+  }
+}
+
+.container.hide {
+  top: -$nav-height;
+}

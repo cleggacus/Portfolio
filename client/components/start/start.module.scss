@@ -1,0 +1,74 @@
+.container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  transition: opacity 0.5s;
+
+  .terminal {
+    display: flex;
+    flex-direction: column;
+    width: 60em;
+    height: 4em;
+
+    .glitch1 {
+      font-size: 2em;
+      color: var(--fg-term);
+      position: relative;
+    }
+
+    .glitch1:after {
+      content: attr(data-text);
+      position: absolute;
+      width: inherit;
+      top: 0;
+      left: 2px;
+      width: 100%;
+      text-shadow: -2px 0 #00f;
+      color: var(--fg-term);
+      overflow: hidden;
+      clip: rect(0, 200%, 0, 0);
+      animation: noise1 2s infinite linear alternate-reverse;
+    }
+
+    .glitch1:before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: -2px;
+      width: 100%;
+      text-shadow: 2px 0 #f00;
+      color: var(--fg-term);
+      overflow: hidden;
+      clip: rect(0, 200%, 0, 0);
+      animation: noise2 2s infinite linear alternate-reverse;
+    }
+  }
+}
+
+.container.hide {
+  opacity: 0;
+}
+
+@keyframes noise1 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+    }
+  }
+}
+
+@keyframes noise2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+    }
+  }
+}
